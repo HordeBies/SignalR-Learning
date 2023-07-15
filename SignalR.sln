@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR.SampleMVC", "Signal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR.RealTimeVotingMVC", "SignalR.RealTimeVotingMVC\SignalR.RealTimeVotingMVC.csproj", "{24C75577-0A4F-4F6A-AAE7-0F844BD03CC0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR.HogwartsHousesMVC", "SignalR.HogwartsHousesMVC\SignalR.HogwartsHousesMVC.csproj", "{262A9E09-6BDB-431C-BE63-C1F72682C5E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{24C75577-0A4F-4F6A-AAE7-0F844BD03CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24C75577-0A4F-4F6A-AAE7-0F844BD03CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24C75577-0A4F-4F6A-AAE7-0F844BD03CC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{262A9E09-6BDB-431C-BE63-C1F72682C5E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262A9E09-6BDB-431C-BE63-C1F72682C5E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262A9E09-6BDB-431C-BE63-C1F72682C5E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262A9E09-6BDB-431C-BE63-C1F72682C5E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
