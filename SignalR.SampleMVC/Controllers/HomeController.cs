@@ -1,16 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using SignalR.SampleMVC.Data;
+using SignalR.SampleMVC.Hubs;
 using SignalR.SampleMVC.Models;
 using System.Diagnostics;
 
 namespace SignalR.SampleMVC.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController(IHubContext<DeathlyHallowsHub> hub) : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public async Task<IActionResult> DeathlyHallows(string type)
         {
-            _logger = logger;
+            if (VotingSystem.VoteCounts.ContainsKey(type))
+            {
+                VotingSystem.VoteCounts[type]++;
+                await hub.Clients.All.SendAsync("updateDeathlyHallowCount",
+                    VotingSystem.VoteCounts[VotingSystem.Cloak],
+                    VotingSystem.VoteCounts[VotingSystem.Stone],
+                    VotingSystem.VoteCounts[VotingSystem.Wand]);
+            }
+
+            return Accepted();
         }
 
         public IActionResult Index()
@@ -18,7 +28,11 @@ namespace SignalR.SampleMVC.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Voting()
+        {
+            return View();
+        }
+        public IActionResult Houses()
         {
             return View();
         }
