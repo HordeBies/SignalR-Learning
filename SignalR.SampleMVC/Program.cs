@@ -15,8 +15,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
-var connectionStringAzureSignalR = builder.Configuration.GetConnectionString("AzureSignalR") ?? throw new InvalidOperationException("Connection string 'AzureSignalR' not found.");
-builder.Services.AddSignalR().AddAzureSignalR(connectionStringAzureSignalR);
+//var connectionStringAzureSignalR = builder.Configuration.GetConnectionString("AzureSignalR") ?? throw new InvalidOperationException("Connection string 'AzureSignalR' not found.");
+builder.Services.AddSignalR()/*.AddAzureSignalR(connectionStringAzureSignalR)*/;
 
 var app = builder.Build();
 
@@ -44,10 +44,11 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 
-//app.MapHub<UserHub>("/hubs/userCount");
-//app.MapHub<DeathlyHallowsHub>("/hubs/deathlyhallows");
-//app.MapHub<HousesHub>("/hubs/houses");
-//app.MapHub<ChatHub>("/hubs/chat");
+app.MapHub<UserHub>("/hubs/userCount");
+app.MapHub<DeathlyHallowsHub>("/hubs/deathlyhallows");
+app.MapHub<HousesHub>("/hubs/houses");
+app.MapHub<BasicChatHub>("/hubs/basicChat");
 app.MapHub<OrderHub>("/hubs/order");
+app.MapHub<ChatHub>("/hubs/chat");
 
 app.Run();

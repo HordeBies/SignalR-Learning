@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using SignalR.SampleMVC.Data;
 using SignalR.SampleMVC.Hubs;
 using SignalR.SampleMVC.Models;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace SignalR.SampleMVC.Controllers
 {
@@ -28,6 +30,10 @@ namespace SignalR.SampleMVC.Controllers
         {
             return View();
         }
+        public IActionResult BasicChat()
+        {
+            return View();
+        }
         public IActionResult Users()
         {
             return View();
@@ -39,6 +45,18 @@ namespace SignalR.SampleMVC.Controllers
         public IActionResult Houses()
         {
             return View();
+        }
+        [Authorize]
+        public IActionResult Chat()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ChatViewModel model = new()
+            {
+                UserId = userId,
+                MaxRoomAllowed = 4,
+                Rooms = context.ChatRooms.ToList()
+            };
+            return View(model);
         }
 
         [ActionName("Order")]
