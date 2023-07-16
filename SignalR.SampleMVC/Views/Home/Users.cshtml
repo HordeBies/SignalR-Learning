@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Users";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-3">Toital Views:</div>
+        <div class="col-4">
+            <span id="totalViewsCounter"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">Toital Users:</div>
+        <div class="col-4">
+            <span id="totalUsersCounter"></span>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script src="~/js/signalr.js"></script>
+    <script src="~/js/usersCount.js"></script>
+}

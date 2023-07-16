@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SignalR.SampleMVC.Models;
 
 namespace SignalR.SampleMVC.Data
 {
@@ -9,5 +10,7 @@ namespace SignalR.SampleMVC.Data
             : base(options)
         {
         }
+
+        public DbSet<Order> Orders { get; set; }
     }
 }
